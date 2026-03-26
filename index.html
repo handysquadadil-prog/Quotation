@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Quotation System | Service & Labour</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f7fa;
@@ -15,22 +13,16 @@
             padding: 20px;
             color: #1e293b;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        /* Card style */
+        .container { max-width: 1200px; margin: 0 auto; }
         .card {
             background: white;
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             padding: 20px;
             margin-bottom: 24px;
-            transition: box-shadow 0.2s;
         }
-        .card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
+        .logo-container { text-align: center; margin-bottom: 20px; }
+        .logo { max-width: 150px; height: auto; }
         h2 {
             margin-top: 0;
             font-size: 1.8rem;
@@ -47,12 +39,7 @@
             align-items: center;
             gap: 8px;
         }
-        .section-icon {
-            font-size: 1.4rem;
-        }
-        .form-group {
-            margin-bottom: 18px;
-        }
+        .form-group { margin-bottom: 18px; }
         label {
             display: block;
             font-weight: 600;
@@ -74,16 +61,8 @@
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
         }
-        .row-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .row-flex .form-group {
-            flex: 1;
-            min-width: 180px;
-        }
-        /* Table styles (responsive) */
+        .row-flex { display: flex; flex-wrap: wrap; gap: 20px; }
+        .row-flex .form-group { flex: 1; min-width: 180px; }
         .table-wrapper {
             overflow-x: auto;
             margin: 12px 0;
@@ -114,7 +93,7 @@
             border: 1px solid #cbd5e1;
             border-radius: 8px;
         }
-        .item-table .remove-btn {
+        .remove-btn {
             background: #ef4444;
             color: white;
             border: none;
@@ -128,9 +107,7 @@
             align-items: center;
             justify-content: center;
         }
-        .item-table .remove-btn:hover {
-            background: #dc2626;
-        }
+        .remove-btn:hover { background: #dc2626; }
         .add-btn {
             background: #10b981;
             color: white;
@@ -146,9 +123,7 @@
             transition: background 0.2s;
             margin-top: 8px;
         }
-        .add-btn:hover {
-            background: #059669;
-        }
+        .add-btn:hover { background: #059669; }
         .total-bar {
             background: #f1f5f9;
             border-radius: 20px;
@@ -182,9 +157,7 @@
             width: 100%;
             transition: background 0.2s;
         }
-        .submit-btn:hover {
-            background: #2563eb;
-        }
+        .submit-btn:hover { background: #2563eb; }
         #result {
             margin-top: 24px;
             padding: 16px;
@@ -192,64 +165,25 @@
             display: none;
             font-weight: 500;
         }
-        .success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
-        }
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-        hr {
-            margin: 16px 0;
-            border: 0;
-            border-top: 1px solid #e2e8f0;
-        }
+        .success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+        .error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
         @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            .card {
-                padding: 16px;
-            }
-            h2 {
-                font-size: 1.5rem;
-            }
-            h3 {
-                font-size: 1.2rem;
-            }
-            .item-table th, .item-table td {
-                padding: 10px 6px;
-            }
-            .total-amount {
-                font-size: 1.4rem;
-            }
-        }
-        /* Additional touch optimizations */
-        button, input, select, textarea {
-            touch-action: manipulation;
-        }
-        .remove-btn, .add-btn {
-            min-height: 40px;
-        }
-        .item-table input[type="number"] {
-            -moz-appearance: textfield;
-        }
-        .item-table input::-webkit-outer-spin-button,
-        .item-table input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+            body { padding: 12px; }
+            .card { padding: 16px; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            .total-amount { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="card">
+        <div class="logo-container">
+            <img src="YOUR_LOGO_URL_HERE" alt="Company Logo" class="logo">
+        </div>
         <h2>📄 Quotation Generator</h2>
         <form id="quoteForm">
-            <!-- Customer & Inspection row (flex) -->
             <div class="row-flex">
                 <div class="form-group">
                     <label>👤 Customer Name *</label>
@@ -281,62 +215,33 @@
                 </div>
             </div>
 
-            <!-- Materials Section -->
             <h3><span class="section-icon">📦</span> Materials / Items</h3>
-            <div class="table-wrapper" id="materialsWrapper">
+            <div class="table-wrapper">
                 <table class="item-table" id="materialsTable">
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Quantity</th>
-                            <th>Unit Price</th>
-                            <th>Total</th>
-                            <th style="width: 50px;"></th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Description</th><th>Quantity</th><th>Unit Price</th><th>Total</th><th style="width:50px;"></th></tr></thead>
                     <tbody id="materialsBody"></tbody>
                 </table>
             </div>
             <button type="button" class="add-btn" onclick="addRow('materials')">+ Add Material</button>
 
-            <!-- Work Section -->
             <h3><span class="section-icon">⚙️</span> Work / Services</h3>
-            <div class="table-wrapper" id="workWrapper">
+            <div class="table-wrapper">
                 <table class="item-table" id="workTable">
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Hours</th>
-                            <th>Rate</th>
-                            <th>Total</th>
-                            <th style="width: 50px;"></th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Description</th><th>Hours</th><th>Rate</th><th>Total</th><th style="width:50px;"></th></tr></thead>
                     <tbody id="workBody"></tbody>
                 </table>
             </div>
             <button type="button" class="add-btn" onclick="addRow('work')">+ Add Work</button>
 
-            <!-- Labour Section -->
             <h3><span class="section-icon">👥</span> Labour Details</h3>
-            <div class="table-wrapper" id="labourWrapper">
+            <div class="table-wrapper">
                 <table class="item-table" id="labourTable">
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th># Labourers</th>
-                            <th>Duration (days)</th>
-                            <th>Rate / Labour / Day</th>
-                            <th>Total</th>
-                            <th style="width: 50px;"></th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Description</th><th># Labourers</th><th>Duration (days)</th><th>Rate / Labour / Day</th><th>Total</th><th style="width:50px;"></th></tr></thead>
                     <tbody id="labourBody"></tbody>
                 </table>
             </div>
             <button type="button" class="add-btn" onclick="addRow('labour')">+ Add Labour</button>
 
-            <!-- Total Bar -->
             <div class="total-bar">
                 <span>💰 Total Amount:</span>
                 <span class="total-amount" id="totalAmountDisplay">0.00</span>
@@ -350,13 +255,12 @@
 </div>
 
 <script>
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1fr1tIv6C5cX6n2y8q2Z8LQ4ya4oJ_PSUmuX1ARfZC0gdTAHKJ5GC2g7hJqpKk3Y/exec'; // Replace with your URL
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1fr1tIv6C5cX6n2y8q2Z8LQ4ya4oJ_PSUmuX1ARfZC0gdTAHKJ5GC2g7hJqpKk3Y/exec';
 
-    // Helper to create a new row for a given table type
+    // Add row to a specific table
     function addRow(type, data = null) {
         const tbody = document.getElementById(`${type}Body`);
         const row = tbody.insertRow();
-        const rowId = Date.now() + Math.random(); // simple unique ID for internal use
 
         if (type === 'materials') {
             row.innerHTML = `
@@ -429,16 +333,11 @@
 
     function updateTotal() {
         let grandTotal = 0;
-        // Materials
         document.querySelectorAll('#materialsBody .mat-total').forEach(t => grandTotal += parseFloat(t.value) || 0);
-        // Work
         document.querySelectorAll('#workBody .work-total').forEach(t => grandTotal += parseFloat(t.value) || 0);
-        // Labour
         document.querySelectorAll('#labourBody .lab-total').forEach(t => grandTotal += parseFloat(t.value) || 0);
-        const totalDisplay = document.getElementById('totalAmountDisplay');
-        const totalHidden = document.getElementById('totalAmount');
-        totalDisplay.textContent = grandTotal.toFixed(2);
-        totalHidden.value = grandTotal.toFixed(2);
+        document.getElementById('totalAmountDisplay').textContent = grandTotal.toFixed(2);
+        document.getElementById('totalAmount').value = grandTotal.toFixed(2);
     }
 
     function collectData(type) {
@@ -449,28 +348,23 @@
                 const desc = row.querySelector('.mat-desc').value;
                 const qty = parseFloat(row.querySelector('.mat-qty').value) || 0;
                 const price = parseFloat(row.querySelector('.mat-price').value) || 0;
-                const total = (qty * price).toFixed(2);
                 if (desc.trim() !== '' && qty > 0 && price > 0) {
-                    items.push({ description: desc, quantity: qty, unitPrice: price, total: total });
+                    items.push({ description: desc, quantity: qty, unitPrice: price, total: (qty * price).toFixed(2) });
                 }
-            } 
-            else if (type === 'work') {
+            } else if (type === 'work') {
                 const desc = row.querySelector('.work-desc').value;
                 const hours = parseFloat(row.querySelector('.work-hours').value) || 0;
                 const rate = parseFloat(row.querySelector('.work-rate').value) || 0;
-                const total = (hours * rate).toFixed(2);
                 if (desc.trim() !== '' && hours > 0 && rate > 0) {
-                    items.push({ description: desc, hours: hours, rate: rate, total: total });
+                    items.push({ description: desc, hours: hours, rate: rate, total: (hours * rate).toFixed(2) });
                 }
-            }
-            else if (type === 'labour') {
+            } else if (type === 'labour') {
                 const desc = row.querySelector('.lab-desc').value;
                 const manpower = parseFloat(row.querySelector('.lab-manpower').value) || 0;
                 const duration = parseFloat(row.querySelector('.lab-duration').value) || 0;
                 const rate = parseFloat(row.querySelector('.lab-rate').value) || 0;
-                const total = (manpower * duration * rate).toFixed(2);
                 if (desc.trim() !== '' && manpower > 0 && duration > 0 && rate > 0) {
-                    items.push({ description: desc, manpower: manpower, duration: duration, ratePerLabourPerDay: rate, total: total });
+                    items.push({ description: desc, manpower: manpower, duration: duration, ratePerLabourPerDay: rate, total: (manpower * duration * rate).toFixed(2) });
                 }
             }
         });
@@ -497,7 +391,11 @@
     // Form submission
     document.getElementById('quoteForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = '⏳ Generating quotation, please wait...';
+        resultDiv.className = '';
+
         const payload = {
             customerName: document.getElementById('customerName').value,
             contactNumber: document.getElementById('contactNumber').value,
@@ -510,11 +408,6 @@
             labour: collectData('labour'),
             totalAmount: document.getElementById('totalAmount').value
         };
-
-        const resultDiv = document.getElementById('result');
-        resultDiv.style.display = 'block';
-        resultDiv.innerHTML = '⏳ Generating quotation, please wait...';
-        resultDiv.className = '';
 
         try {
             const response = await fetch(APPS_SCRIPT_URL, {
